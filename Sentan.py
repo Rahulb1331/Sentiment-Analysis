@@ -18,10 +18,7 @@ nltk.download('punkt_tab')
 
 # Installing Tesseract-OCR for streamlit
 import os
-os.system("apt-get update && apt-get install -y tesseract-ocr")
-import shutil
-tesseract_path = shutil.which("tesseract")
-pytesseract.pytesseract.tesseract_cmd = tesseract_path if tesseract_path else "/usr/bin/tesseract"
+pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"  
 
 # Initialize Sentiment Analyzer
 sia = SentimentIntensityAnalyzer()
