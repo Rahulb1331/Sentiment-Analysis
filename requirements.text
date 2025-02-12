@@ -1,6 +1,7 @@
 streamlit
 pdfplumber
 pytesseract
+Tesseract-OCR
 pillow
 nltk
 matplotlib
