@@ -8,3 +8,4 @@ wordcloud
 seaborn
 pandas
 reportlab
+os
