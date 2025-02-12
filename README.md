@@ -2,14 +2,12 @@
 This is a Streamlit-based Sentiment Analysis Web App that allows users to upload PDFs, images, or text files and perform sentiment analysis on the extracted text. The app uses Tesseract-OCR for extracting text from images and NLTK's SentimentIntensityAnalyzer for sentiment analysis.<br>
 <h3> Features</h3>
 
-Extracts text from PDFs, images (PNG, JPG, JPEG), and text files
+Extracts text from PDFs, images (PNG, JPG, JPEG), and text files.
 
-Uses Tesseract-OCR to extract text from images
+Uses Tesseract-OCR to extract text from images.
 
-Performs sentiment analysis (Positive, Negative, Neutral) using NLTK's VADER Lexicon
+Performs sentiment analysis (Positive, Negative, Neutral) using NLTK's VADER Lexicon.
 
-Generates sentiment score breakdown
+Generates sentiment score breakdown.
 
-Creates a word cloud from extracted text
-
-Identifies top positive, negative, and neutral words
+Identifies top positive, negative, and neutral words.
