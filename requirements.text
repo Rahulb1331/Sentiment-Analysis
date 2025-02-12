@@ -1,0 +1,11 @@
+streamlit
+fitz
+pdfplumber
+pytesseract
+pillow
+nltk
+matplotlib
+wordcloud
+seaborn
+pandas
+reportlab
