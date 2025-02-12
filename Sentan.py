@@ -6,6 +6,7 @@ import nltk
 nltk.download('punkt_tab')
 from nltk.sentiment import SentimentIntensityAnalyzer
 import io
+import os
 import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import seaborn as sns
@@ -17,7 +18,6 @@ nltk.download('vader_lexicon')
 nltk.download('punkt_tab')
 
 # Installing Tesseract-OCR for streamlit
-import os
 pytesseract.pytesseract.tesseract_cmd = "/usr/bin/tesseract"  
 
 # Initialize Sentiment Analyzer
