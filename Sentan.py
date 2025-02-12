@@ -88,7 +88,7 @@ def get_top_sentiment_words(text):
     word_scores = {word: sia.polarity_scores(word)['compound'] for word in words if word.isalnum()}
     sorted_words = sorted(word_scores.items(), key=lambda x: x[1], reverse=True)
     top_positive = [w[0] for w in sorted_words if w[1] > 0][:5]
-    top_negative = [w[0] for w in sorted_words if w[1] < 0][-1:-5]
+    top_negative = [w[0] for w in sorted_words if w[1] < 0][-5:]
     top_neutral = [w[0] for w in sorted_words if w[1] == 0][:5]
     return top_positive, top_negative, top_neutral
 
