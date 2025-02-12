@@ -7,7 +7,8 @@ This is a Streamlit-based Sentiment Analysis Web App that allows users to upload
 - Performs sentiment analysis (Positive, Negative, Neutral) using NLTK's VADER Lexicon.
 - Generates sentiment score breakdown and identifies top positive, negative, and neutral words.
 
-
+## Future Improvements
+Enhance handwritten text identification for better OCR accuracy and sentiment analysis.
 
 
 
