@@ -3,7 +3,6 @@ import pdfplumber
 import pytesseract
 from PIL import Image
 import nltk
-nltk.download('punkt_tab')
 from nltk.sentiment import SentimentIntensityAnalyzer
 import io
 import os
