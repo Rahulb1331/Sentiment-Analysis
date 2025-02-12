@@ -17,6 +17,7 @@ nltk.download('vader_lexicon')
 nltk.download('punkt_tab')
 
 # Installing Tesseract-OCR for streamlit
+import os
 os.system("apt-get update && apt-get install -y tesseract-ocr")
 
 # Initialize Sentiment Analyzer
