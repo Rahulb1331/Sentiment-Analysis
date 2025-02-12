@@ -10,7 +10,8 @@ import matplotlib.pyplot as plt
 from wordcloud import WordCloud
 import seaborn as sns
 import pandas as pd
-from collections import Counter
+from reportlab.pdfgen import canvas
+from reportlab.lib.pagesizes import letter
 
 # Download VADER lexicon (only needed once)
 nltk.download('vader_lexicon')
@@ -93,6 +94,40 @@ def get_top_sentiment_words(text):
     return top_positive, top_negative, top_neutral
 
 
+
+# Function to generate and download a sentiment report
+def generate_pdf_report(text, sentiment, scores):
+    buffer = io.BytesIO()
+    c = canvas.Canvas(buffer, pagesize=letter)
+    width, height = letter
+
+    c.setFont("Helvetica-Bold", 16)
+    c.drawString(100, height - 50, "Sentiment Analysis Report")
+
+    c.setFont("Helvetica", 12)
+    c.drawString(100, height - 80, f"Overall Sentiment: {sentiment}")
+    c.drawString(100, height - 100, f"Positive Score: {scores['pos']}")
+    c.drawString(100, height - 120, f"Negative Score: {scores['neg']}")
+    c.drawString(100, height - 140, f"Neutral Score: {scores['neu']}")
+    c.drawString(100, height - 160, f"Compound Score: {scores['compound']}")
+
+    c.setFont("Helvetica", 10)
+    c.drawString(100, height - 200, "Extracted Text:")
+    text_lines = text[:1000].split('\n')  # Limit to 1000 characters
+    y = height - 220
+    for line in text_lines:
+        c.drawString(100, y, line[:80])
+        y -= 15
+        if y < 50:
+            c.showPage()
+            c.setFont("Helvetica", 10)
+            y = height - 50
+
+    c.save()
+    buffer.seek(0)
+    return buffer
+
+
 # Streamlit UI
 st.title("Sentiment Analysis Web App")
 st.write("Upload a **PDF, Image, or Text file** to analyze its sentiment.")
@@ -130,5 +165,11 @@ if uploaded_file is not None:
         st.write("**Top Positive Words:**", ', '.join(top_positive))
         st.write("**Top Negative Words:**", ', '.join(top_negative))
         st.write("**Top Neutral Words:**", ', '.join(top_neutral))
+
+        # Generate and provide a download link for the report
+        pdf_buffer = generate_pdf_report(text, sentiment, scores)
+        st.download_button(label="Download Sentiment Report (PDF)", data=pdf_buffer, file_name="sentiment_report.pdf",
+                           mime="application/pdf")
+
     else:
         st.error("Could not extract any text. Try another file.")
